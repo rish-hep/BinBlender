@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BinBlender</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+  <h1>BinBlender</h1>
+
+  <div class="input-section fade-in">
+    <h2>Paste your data (tab-separated)</h2>
+    <textarea id="data-input" placeholder="Centrality<TAB><Npart><TAB><Npart Error><TAB>dN/dy<TAB>dN/dy Error" rows="10" cols="60"></textarea>
+  </div>
+
+  <div class="input-section fade-in">
+    <h2>Specify Centrality Merges</h2>
+    <input type="text" id="merge-input" placeholder="Example: 0-10, 10-20">
+    <small>Separate merged groups with commas.</small>
+  </div>
+
+  <button id="process-button" class="fade-in">Process Data</button>
+
+  <div class="input-section fade-in">
+    <label>
+      <input type="checkbox" id="auto-merge-checkbox">
+      Auto-merge consecutive bins based on data
+    </label>
+  </div>
+
+  <div class="output-section fade-in">
+    <h2>Merged Results</h2>
+    <div id="result-table"></div>
+    <h2>Plot</h2>
+    <canvas id="plot-canvas" width="800" height="400" style="margin-top: 30px;"></canvas>
+  </div>
+
+  <div class="formula-section">
+    <h2>Formula used for merging</h2>
+    <p>
+      $$ 
+      \text{Merged} \ \frac{dN}{dy} = \frac{\sum_i N_{\text{part},i} \times \left( \frac{dN}{dy} \right)_i}{\sum_i N_{\text{part},i}}
+      $$
+    </p>
+    <p>
+      $$ 
+      \sigma_{\text{Merged}}^2 = \sum_i \left( \frac{N_{\text{part},i}}{\sum_j N_{\text{part},j}} \sigma_{(dN/dy)_i} \right)^2 + \sum_i \left( \frac{(dN/dy)_i - (dN/dy)_{\text{Merged}}}{\sum_j N_{\text{part},j}} \sigma_{N_{\text{part},i}} \right)^2
+      $$
+    </p>
+  </div>
+
+  <div class="button-group fade-in">
+    <button id="download-csv" style="display:none;">Download CSV</button>
+    <button id="download-dat" style="display:none;">Download DAT</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

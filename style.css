@@ -1,0 +1,131 @@
+body {
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+  min-height: 100vh;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 3em;
+  margin-bottom: 0.5em;
+  color: #4b4b6b;
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #555;
+  margin-top: 1.5em;
+}
+
+.input-section, .output-section {
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0px 8px 24px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+textarea, input[type="text"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 1em;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  background: #fafafa;
+  box-sizing: border-box; /* 🛠️ This line fixes the overflow */
+}
+
+button {
+  margin: 20px 10px;
+  padding: 12px 24px;
+  font-size: 1.1em;
+  background-color: #6a5acd;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 10px rgba(106,90,205,0.3);
+}
+
+button:hover {
+  background-color: #5a4abc;
+  transform: translateY(-2px);
+}
+
+#result-table {
+  margin-top: 20px;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #eee;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeInAnimation ease 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+input[type="checkbox"] {
+  transform: scale(1.3);
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.formula-section {
+  margin: 30px auto;
+  max-width: 800px;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.formula-section p {
+  font-size: 0.8em;
+}
